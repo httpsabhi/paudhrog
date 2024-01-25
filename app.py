@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-tom_model = load_model('models/tomato.h5')
+tom_model = load_model('models/tomato_new.h5')
 apple_model = load_model('models/apple_new.h5')
 
 def predict(model, classes):
