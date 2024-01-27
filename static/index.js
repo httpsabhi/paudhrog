@@ -43,7 +43,6 @@ function showPosition(position) {
     tempMobile.innerHTML = Math.round(data.main.temp)+"° C";
     weatherIconMobile.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
     weatherIcon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
-    console.log(data);
   });
 }
 
