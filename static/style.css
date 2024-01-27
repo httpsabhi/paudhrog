@@ -161,7 +161,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px; /* Decreased padding */
+  padding: 8px 20px;
   background-color: rgb(8, 134, 134);
   color: #fff;
   position: sticky;
@@ -180,7 +180,7 @@ p {
   margin-left: 10px;
 }
 
-.logo a{
+.logo a {
   text-decoration: none;
   cursor: pointer;
   color: whitesmoke;
@@ -233,7 +233,7 @@ h2 {
   color: #333333;
 }
 
-#image-form{
+#image-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -266,7 +266,7 @@ h2 {
   background-color: #0056b3;
 }
 
-select{
+select {
   outline: none;
   border-radius: 5px;
   margin-left: 5px;
@@ -282,7 +282,7 @@ select{
   color: #007bff;
 }
 
-.preloader{
+.preloader {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -296,32 +296,136 @@ select{
   z-index: 20000;
 }
 
-.preloader img{
+.preloader img {
   width: 50vw;
 }
 
-.preloader-hidden{
+.preloader-hidden {
   opacity: 0;
   visibility: hidden;
 }
 
+/* Nav Weather */
+.weather a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.weather-icon {
+  width: 40px;
+}
+
+.temp {
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
+
+.weather-mobile {
+  display: none;
+}
+
 /* Responsive Design */
+@media screen and (max-width: 920px) {
+  .card-container {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    min-width: fit-content;
+  }
+  /* Nav Bar */
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  .logo a {
+    font-size: 1.7rem;
+    margin-right: 40px;
+  }
+
+  .menu {
+    position: absolute;
+    top: 105%;
+    display: none;
+    width: 250px;
+    background: rgb(8, 134, 134);
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    text-align: center;
+  }
+
+  .weather {
+    display: none;
+  }
+
+  .weather-mobile {
+    display: flex;
+  }
+
+  .weather-mobile a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .weather-icon-mobile {
+    width: 30px;
+  }
+
+  .temp-mobile {
+    letter-spacing: 0.4px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links .menu li a {
+    padding: 0 5px !important;
+  }
+  #ham-menu {
+    display: block;
+    font-size: 1.5rem;
+  }
+
+  .menu.open {
+    display: block;
+    right: 2%;
+  }
+}
+
 @media screen and (max-width: 300px) {
   /* Navbar */
   .navbar .logo {
     font-size: 1.5rem;
   }
 
-  .nav-links #ham-menu {
-    padding-right: 30px !important;
-  }
-
   .nav-links .menu {
     width: 200px;
   }
 
+  .logo a {
+    font-size: 1.5rem;
+    margin-right: 40px;
+  }
+
+  .weather-mobile a {
+    gap: 0px;
+  }
+
+  .temp-mobile {
+    letter-spacing: 0.3px;
+    font-size: 0.8rem;
+}
+
   /* Home */
-  #home .container{
+  #home .container {
     padding: 20px;
   }
 
@@ -329,28 +433,29 @@ select{
     font-size: 1.1rem;
   }
 
-  #image-form .label{
+  #image-form .label {
     font-size: 0.9rem;
   }
 
-  #image-form .input{
+  #image-form .input {
     padding: 5px;
   }
 
-  #image-form .button{
+  #image-form .button {
     padding: 5px 10px;
   }
 
   /* About */
-  #about h1, .meet h1{
+  #about h1,
+  .meet h1 {
     font-size: 1.4rem;
   }
 
-  #about .row{
+  #about .row {
     margin: 10px 20px !important;
   }
 
-  #about .row p{
+  #about .row p {
     font-size: 0.8rem;
     line-height: 1.2rem;
   }
@@ -416,43 +521,5 @@ select{
   .card-container {
     flex-direction: column;
     align-items: center;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  body {
-    min-width: fit-content;
-  }
-  /* Nav Bar */
-  .menu {
-    position: absolute;
-    top: 105%;
-    display: none;
-    width: 250px;
-    height: 18vh;
-    background: rgb(8, 134, 134);
-    border-radius: 10px;
-    transition: all 0.5s ease;
-    text-align: center;
-  }
-
-  .nav-links .menu li a {
-    padding: 0 5px !important;
-  }
-  #ham-menu {
-    display: block;
-    font-size: 1.5rem;
-    padding-right: 40px;
-  }
-
-  .menu.open {
-    display: block;
-    right: 2%;
-  }
-}
-
-@media screen and (max-width: 920px) {
-  .card-container {
-    margin-bottom: 50px;
   }
 }

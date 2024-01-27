@@ -32,17 +32,22 @@ def Result():
     if request.method == 'POST':
         model = request.form.get('plant')
         if(model == 'tomato'):
-            classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato_Yellow_leaf_Curl_Virus', 'Two-spotted_spider_mite']
+            classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato Yellow leaf Curl Virus', 'Two-spotted_spider_mite']
             return render_template('home.html', result=predict(tom_model, classes))
         elif(model == 'apple'):
             classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
             return render_template('home.html', result=predict(apple_model, classes))
         else:
             return render_template('home.html', result='Server Error')
+        
+# PaudhLearn
+@app.route('/paudhlearn')
+def paudhlearn():
+    return render_template('paudhlearn.html')
 
 @app.errorhandler(404) 
 def not_found(e): 
   return render_template("404.html") 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='localhost', port=8080, debug=True)
