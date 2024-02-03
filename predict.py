@@ -12,10 +12,8 @@ def MakePrediction(image_path, model, classes):
     img_arr = tf.keras.applications.densenet.preprocess_input(img_arr)
     img_arr = np.array([img_arr])
     
-    # Make predictions using the model
     pred = model.predict(img_arr)
-    
-    # Get the predicted category
     category = classes[np.argmax(pred)]
-    
+    # print(category)
     return category
+

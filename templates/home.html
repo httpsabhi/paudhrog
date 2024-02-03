@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <body class="main">
-  <div class="preloader">
-    <img src="../static/img/preloader.gif" alt="">
+  <div class="loader-container">
+    <div class="preloader">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
   </div>
   {% extends "layout.html" %} {% block body %}
   <main>
@@ -15,10 +19,7 @@
         >
           <div>
             <label for="Plant" class="label">Select Plant</label>
-            <select name="plant" id="plant">
-              <option value="apple">Apple</option>
-              <option value="tomato">Tomato</option>
-            </select>
+            <select name="plant" id="plant"></select>
           </div>
           <div>
             <label for="image-upload" class="label">Select an image:</label>
@@ -184,3 +185,191 @@
   </main>
   {% endblock %}
 </body>
+=======
+<body class="main">
+  <div class="loader-container">
+    <div class="preloader">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+  {% extends "layout.html" %} {% block body %}
+  <main>
+    <section id="home">
+      <div class="container">
+        <h2>Plant Disease Detection</h2>
+        <form
+          id="image-form"
+          method="POST"
+          action="/result"
+          enctype="multipart/form-data"
+        >
+          <div>
+            <label for="Plant" class="label">Select Plant</label>
+            <select name="plant" id="plant"></select>
+          </div>
+          <div>
+            <label for="image-upload" class="label">Select an image:</label>
+            <input
+              type="file"
+              id="image-upload"
+              accept="image/*"
+              class="input"
+              name="image"
+            />
+          </div>
+          <div>
+            <button id="detect-button" class="button">Detect Disease</button>
+          </div>
+        </form>
+        {% if result %}
+        <p id="result" class="result">{{result}}</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section id="about">
+      <div>
+        <h1>About Us</h1>
+      </div>
+      <div class="row">
+        <p>
+          At Tomato Disease Detection, we are dedicated to a profound mission:
+          to empower farmers and agricultural communities worldwide with the
+          most advanced technology and indispensable tools available. Our
+          commitment extends to enabling farmers to take proactive measures in
+          preventing and managing tomato diseases effectively. Through the
+          deployment of cutting-edge AI algorithms and the establishment of a
+          state-of-the-art real-time monitoring system, we are at the forefront
+          of transforming the landscape of tomato disease detection and
+          treatment. Our vision is rooted in the belief that these advancements
+          will not only result in healthier crops and increased agricultural
+          yield but also lead to more sustainable farming practices. We are
+          deeply committed to our global agricultural community and are
+          determined to play a pivotal role in ensuring food security, promoting
+          economic growth, and contributing to the well-being of generations to
+          come. Our mission is not just about technology; it's about creating a
+          brighter, healthier future for all.
+        </p>
+      </div>
+    </section>
+    <section class="meet" id="meet">
+      <div>
+        <h1>Meet Our Team</h1>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="content">
+            <span></span>
+            <div class="img">
+              <img src="../static/img/abhi.jpg" alt="Abhay Kumar" />
+            </div>
+            <h4>Abhay Kumar</h4>
+            <h6>Machine Learning</h6>
+            <h6>Backend</h6>
+            <!-- <p>right this is this</p> -->
+          </div>
+          <div class="links">
+            <a
+              href="https://www.linkedin.com/in/abhay-kumar-69a1ab24a/"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="https://github.com/httpsabhi" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://www.instagram.com/_._abhayy._._/" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="content">
+            <span></span>
+            <div class="img">
+              <img src="../static/img/tanu.jpg" alt="Tanishqa Bali" />
+            </div>
+            <h4>Tanishqa Bali</h4>
+            <h6>Web Design</h6>
+            <h6>Frontend</h6>
+            <!-- <p>right this is this</p> -->
+          </div>
+          <div class="links">
+            <a
+              href="https://www.linkedin.com/in/tanishqa-bali-7959a8216/"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="https://github.com/Tanishqa23" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://instagram.com/tanishqa_165/" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="contact-container">
+        <div class="content">
+          <div class="left-side">
+            <div class="address details">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="topic">Address</div>
+              <div class="text-one">Chandigarh University</div>
+            </div>
+            <div class="instagram details">
+              <i class="fab fa-instagram"></i>
+              <div class="topic">Instagram</div>
+              <div class="text-one">
+                <a
+                  href="https://www.instagram.com/_._abhayy._._/"
+                  target="_blank"
+                  >Abhay Kumar</a
+                >
+              </div>
+              <div class="text-one">
+                <a href="https://instagram.com/tanishqa_165/" target="_blank"
+                  >Tanishqa Bali</a
+                >
+              </div>
+            </div>
+
+            <div class="email details">
+              <i class="fas fa-envelope"></i>
+              <div class="topic">Email</div>
+              <div class="text-one">abhaykumar714371@gmail.com</div>
+              <div class="text-two">tanishqabali23@gmail.com</div>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="topic-text">Get in Touch With Us</div>
+            <p>We're here to answer any questions you may have.</p>
+            <form action="https://formspree.io/f/mrgwjeve" method="POST">
+              <div class="input-box">
+                <input type="text" placeholder="Enter your name" name="name" />
+              </div>
+              <div class="input-box">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  name="email"
+                />
+              </div>
+              <div class="input-box message-box">
+                <textarea placeholder="Your Message" name="message"></textarea>
+              </div>
+              <div class="btn">
+                <input type="submit" value="Send Now" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% endblock %}
+</body>
+>>>>>>> 4bb03e240885333305275665c89b401264a6b6ea
