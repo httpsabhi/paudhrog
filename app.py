@@ -7,15 +7,16 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-tom_model = load_model('models/tomato_new.h5')
-apple_model = load_model('models/apple_new.h5')
+app.tom_model = load_model('models/tomato_new.h5')
+app.apple_model = load_model('models/apple_new.h5')
+app.wheat_model = load_model('models/wheat_new.keras')
 
 def predict(model, classes):
-    image = request.files['image']
+    image = request.files.get('image')
     if not image:
         return "No image found"
     else:
-        UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
+        UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
         if not os.path.exists(UPLOAD_FOLDER):
             os.makedirs(UPLOAD_FOLDER)
 
@@ -33,10 +34,13 @@ def Result():
         model = request.form.get('plant')
         if(model == 'tomato'):
             classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato Yellow leaf Curl Virus', 'Two-spotted_spider_mite']
-            return render_template('home.html', result=predict(tom_model, classes))
+            return render_template('home.html', result=predict(app.tom_model, classes))
         elif(model == 'apple'):
             classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
-            return render_template('home.html', result=predict(apple_model, classes))
+            return render_template('home.html', result=predict(app.apple_model, classes))
+        elif(model == 'wheat'):
+            classes = ['Brown Rust', 'Healthy', 'Yellow Rust']
+            return render_template('home.html', result=predict(app.wheat_model, classes))
         else:
             return render_template('home.html', result='Server Error')
         
@@ -50,4 +54,4 @@ def not_found(e):
   return render_template("404.html") 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run()

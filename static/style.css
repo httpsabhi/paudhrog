@@ -289,20 +289,41 @@ select {
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #151921;
+  background-color: #f7f9fb;
   transition: opacity 0.75s, visibility 0.75s;
   z-index: 20000;
-}
-
-.preloader img {
-  width: 50vw;
 }
 
 .preloader-hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader {
+  width: 75px;
+  height: 75px;
+  border: 15px solid #dddddd;
+  border-top-color: rgb(8, 134, 134);
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 /* Nav Weather */

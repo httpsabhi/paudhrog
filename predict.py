@@ -14,8 +14,6 @@ def MakePrediction(image_path, model, classes):
     
     # Make predictions using the model
     pred = model.predict(img_arr)
-    
-    # Get the predicted category
     category = classes[np.argmax(pred)]
-    
+    # print(category)
     return category

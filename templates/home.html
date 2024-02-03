@@ -1,6 +1,9 @@
 <body class="main">
-  <div class="preloader">
-    <img src="../static/img/preloader.gif" alt="">
+  <div class="loader-container">
+    <div class="preloader">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
   </div>
   {% extends "layout.html" %} {% block body %}
   <main>
@@ -15,10 +18,7 @@
         >
           <div>
             <label for="Plant" class="label">Select Plant</label>
-            <select name="plant" id="plant">
-              <option value="apple">Apple</option>
-              <option value="tomato">Tomato</option>
-            </select>
+            <select name="plant" id="plant"></select>
           </div>
           <div>
             <label for="image-upload" class="label">Select an image:</label>
