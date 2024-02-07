@@ -1,9 +1,12 @@
 // preloader
 window.addEventListener("load", () => {
+  const loader_container = document.querySelector(".loader-container");
   const loader = document.querySelector(".preloader");
   loader.classList.add("preloader-hidden");
   loader.addEventListener("transitionend", () => {
-    document.body.removeChild(loader);
+    if (document.body.contains(loader_container)) {
+      document.body.removeChild(loader_container);
+    }
   });
 });
 
@@ -23,6 +26,7 @@ menu.onclick = () => {
 const select = document.getElementById("plant");
 const plants = {
   Apple: "apple",
+  Cherry: "cherry",
   Tomato: "tomato",
   Wheat: "wheat"
 }
