@@ -7,10 +7,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-tom_model = load_model('models/tomato_new.h5')
-apple_model = load_model('models/apple_new.h5')
-wheat_model = load_model('models/wheat_new.keras')
-cherry_model = load_model('models/cherry.keras')
+app.tom_model = load_model('models/tomato_new.h5')
+app.apple_model = load_model('models/apple_new.h5')
+app.wheat_model = load_model('models/wheat_new.keras')
+app.cherry_model = load_model('models/cherry.keras')
 
 def predict(model, classes):
     image = request.files.get('image')
@@ -36,16 +36,16 @@ def Result():
         if model in ('tomato', 'apple', 'wheat', 'cherry'):
             if(model == 'tomato'):
                 classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato Yellow leaf Curl Virus', 'Two-spotted_spider_mite']
-                return render_template('home.html', result=predict(tom_model, classes))
+                return render_template('home.html', result=predict(app.tom_model, classes))
             elif(model == 'apple'):
                 classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
-                return render_template('home.html', result=predict(apple_model, classes))
+                return render_template('home.html', result=predict(app.apple_model, classes))
             elif(model == 'wheat'):
                 classes = ['Brown Rust', 'Healthy', 'Yellow Rust']
-                return render_template('home.html', result=predict(wheat_model, classes))
+                return render_template('home.html', result=predict(app.wheat_model, classes))
             elif(model == 'cherry'):
                 classes = ['Cherry Powdery mildew', 'Cherry healthy']
-                return render_template('home.html', result=predict(cherry_model, classes))
+                return render_template('home.html', result=predict(app.cherry_model, classes))
             else:
                 return render_template('home.html', result='Server Error')
         else:
