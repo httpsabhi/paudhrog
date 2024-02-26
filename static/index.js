@@ -27,8 +27,9 @@ const select = document.getElementById("plant");
 const plants = {
   Apple: "apple",
   Cherry: "cherry",
+  Grapes: "grape",
   Tomato: "tomato",
-  Wheat: "wheat"
+  Wheat: "wheat",
 }
 
 Object.keys(plants).forEach(key => {
@@ -66,3 +67,25 @@ function showPosition(position) {
 }
 
 getLocation();
+
+// Display Result
+function predict(){
+  const formData = new FormData($('#image-form')[0]);
+  $('#result').html("");
+  $('#predict-loader').show();
+  $.ajax({
+    url: '/result',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(response){
+      $('#predict-loader').hide();
+      $('#result').html(response.result);
+    },
+    error: function(error){
+      $('#predict-loader').hide();
+      console.log(error);
+    }
+  });
+}

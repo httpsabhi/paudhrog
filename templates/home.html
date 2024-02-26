@@ -31,12 +31,11 @@
             />
           </div>
           <div>
-            <button id="detect-button" class="button">Detect Disease</button>
+            <button type="button" id="detect-button" class="button" onclick="predict()">Detect Disease</button>
           </div>
         </form>
-        {% if result %}
-        <p id="result" class="result">{{result}}</p>
-        {% endif %}
+        <div id="result" class="result"></div>
+        <div id="predict-loader"><p>Predicting ...</p></div>
       </div>
     </section>
 

@@ -318,6 +318,16 @@ select {
   animation: loading 0.75s ease infinite;
 }
 
+#predict-loader {
+  display: none;
+}
+
+#predict-loader p {
+  color: #007bff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 @keyframes loading {
   from {
     transform: rotate(0turn);
@@ -451,7 +461,7 @@ select {
   .temp-mobile {
     letter-spacing: 0.3px;
     font-size: 0.8rem;
-}
+  }
 
   /* Home */
   #home .container {
@@ -545,4 +555,3 @@ select {
     line-height: 1.4rem;
   }
 }
-

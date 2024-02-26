@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from tensorflow.keras.models import load_model
 from predict import MakePrediction
 from flask_cors import CORS
@@ -11,6 +11,7 @@ app.tom_model = load_model('models/tomato_new.h5')
 app.apple_model = load_model('models/apple_new.h5')
 app.wheat_model = load_model('models/wheat_new.keras')
 app.cherry_model = load_model('models/cherry.keras')
+app.grape_model = load_model('models/grapes.keras')
 
 def predict(model, classes):
     image = request.files.get('image')
@@ -33,23 +34,27 @@ def home():
 def Result():
     if request.method == 'POST':
         model = request.form.get('plant')
-        if model in ('tomato', 'apple', 'wheat', 'cherry'):
+        if model in ('tomato', 'apple', 'wheat', 'cherry', 'grape'):
             if(model == 'tomato'):
                 classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato Yellow leaf Curl Virus', 'Two-spotted_spider_mite']
-                return render_template('home.html', result=predict(app.tom_model, classes))
+                result=predict(app.tom_model, classes)
             elif(model == 'apple'):
                 classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
-                return render_template('home.html', result=predict(app.apple_model, classes))
+                result=predict(app.apple_model, classes)
             elif(model == 'wheat'):
                 classes = ['Brown Rust', 'Healthy', 'Yellow Rust']
-                return render_template('home.html', result=predict(app.wheat_model, classes))
+                result=predict(app.wheat_model, classes)
             elif(model == 'cherry'):
                 classes = ['Cherry Powdery mildew', 'Cherry healthy']
-                return render_template('home.html', result=predict(app.cherry_model, classes))
+                result=predict(app.cherry_model, classes)
+            elif(model == 'grape'):
+                classes = ['Black Rot', 'Esca (Black Measles)', 'Leaf Blight (Isariopsis Leaf Spot)', 'Healthy']
+                result=predict(app.grape_model, classes)
             else:
-                return render_template('home.html', result='Server Error')
+                result='Server Error'
+            return jsonify(result=result)
         else:
-            return render_template('home.html', result='No model found')
+            return jsonify(result='No model found')
         
 # PaudhLearn
 @app.route('/paudhlearn')
