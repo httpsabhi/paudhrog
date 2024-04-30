@@ -10,11 +10,11 @@ app = Flask(__name__)
 CORS(app)
 
 app.tom_model = load_model('models/tomato_new.h5')
-# apple_model = load_model('models/apple_new.h5')
-wheat_model = load_model('models/wheat_new.keras')
-# cherry_model = load_model('models/cherry.keras')
-# app.grape_model = load_model('models/grapes.keras')
-# peach_model = load_model('models/peach.keras')
+apple_model = load_model('models/apple_new.h5')
+app.wheat_model = load_model('models/wheat_new.keras')
+cherry_model = load_model('models/cherry.keras')
+peach_model = load_model('models/peach.keras')
+app.grape_model = load_model('models/grapes.keras')
 
 def predict(model, classes):
     image = request.files.get('image')
@@ -41,21 +41,21 @@ def Result():
             if(model == 'tomato'):
                 classes = ['Bacterial_spot', 'Early_blight', 'Healthy', 'Late_blight', 'Leaf_Mold', 'Septoria_leaf_spot', 'Target_Spot', 'Tomato_mosaic_virus', 'Tomato Yellow leaf Curl Virus', 'Two-spotted_spider_mite']
                 result=predict(app.tom_model, classes)
-            # elif(model == 'apple'):
-            #     classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
-            #     result=predict(apple_model, classes)
+            elif(model == 'apple'):
+                classes = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
+                result=predict(apple_model, classes)
             elif(model == 'wheat'):
                 classes = ['Brown Rust', 'Healthy', 'Yellow Rust']
-                result=predict(wheat_model, classes)
-            # elif(model == 'cherry'):
-            #     classes = ['Cherry Powdery mildew', 'Cherry healthy']
-            #     result=predict(cherry_model, classes)
-            # elif(model == 'grape'):
-            #     classes = ['Black Rot', 'Esca (Black Measles)', 'Leaf Blight (Isariopsis Leaf Spot)', 'Healthy']
-            #     result=predict(app.grape_model, classes)
-            # elif(model == 'peach'):
-            #     classes = ['Bacterial Spot', 'Healthy']
-            #     result=predict(peach_model, classes)
+                result=predict(app.wheat_model, classes)
+            elif(model == 'cherry'):
+                classes = ['Cherry Powdery mildew', 'Cherry healthy']
+                result=predict(cherry_model, classes)
+            elif(model == 'grape'):
+                classes = ['Black Rot', 'Esca (Black Measles)', 'Leaf Blight (Isariopsis Leaf Spot)', 'Healthy']
+                result=predict(app.grape_model, classes)
+            elif(model == 'peach'):
+                classes = ['Bacterial Spot', 'Healthy']
+                result=predict(peach_model, classes)
             else:
                 result=("Server Error", 0)
             return jsonify(result=result)
@@ -73,5 +73,5 @@ def paudhlearn():
 def not_found(e): 
   return render_template("404.html") 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

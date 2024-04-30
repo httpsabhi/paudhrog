@@ -8,7 +8,6 @@ def MakePrediction(image_path, model, classes):
     
     img_arr = np.array(img_open)
     
-    # Preprocess the image array as needed by your model
     img_arr = tf.keras.applications.densenet.preprocess_input(img_arr)
     img_arr = np.array([img_arr])
     
